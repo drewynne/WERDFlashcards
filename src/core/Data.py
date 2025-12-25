@@ -1,3 +1,4 @@
+
 import pandas as pd
 
 language_tuple_list = [("English", 0),
@@ -48,14 +49,18 @@ multi_language_dict = {
 }
 
 class Data:
-
+    """
+    Class for managing and retrieving multi-language data for a quiz application.
+    """
     language_tuple_list = language_tuple_list
     multi_language_dict: dict
     word_list: list
 
 
     def __init__(self):
-        output_file = "multi_language_dict.csv"
+        import os
+        project_root = os.path.dirname(os.path.dirname(os.path.dirname(__file__)))
+        output_file = os.path.join(project_root, "data", "multi_language_dict.csv")
 
         new_data = pd.read_csv(output_file)
 
@@ -64,10 +69,16 @@ class Data:
         self.multi_language_dict = word_dict
 
     def get_data(self):
+        """
+        Retrieves the multi-language data dictionary.
+        """
         return self.multi_language_dict
 
 
 if __name__ == "__main__":
+    """
+    Test code for the Data class.
+    """
     print(language_tuple_list)
     print(multi_language_dict)
 
@@ -88,7 +99,9 @@ if __name__ == "__main__":
 
 
 
-    output_file = "multi_language_dict.csv"
+    import os
+    project_root = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
+    output_file = os.path.join(project_root, "data", "multi_language_dict.csv")
 
     new_data = pd.read_csv(output_file)
 
